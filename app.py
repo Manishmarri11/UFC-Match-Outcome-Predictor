@@ -5,7 +5,7 @@ import pandas as pd
 with open('ufc_ml.pkl', 'rb') as file:
     model = pickle.load(file)
 
-data = pd.read_csv(r'C:\Users\manis\OneDrive\Desktop\Machine_learning\ufc-master.csv')
+data = pd.read_csv('ufc-master.csv')
 imp_columns = ['RedOdds', 'BlueOdds', 'RedExpectedValue', 'BlueExpectedValue', 'BlueCurrentLoseStreak', 'BlueCurrentWinStreak', 'BlueLosses', 'BlueWinsByDecisionMajority', 'BlueWinsByDecisionSplit', 'BlueWinsByDecisionUnanimous', 'BlueWinsByKO', 'BlueWinsBySubmission', 'BlueWins','BlueHeightCms','BlueReachCms', 'BlueWeightLbs', 'RedCurrentLoseStreak', 'RedCurrentWinStreak', 'RedLosses', 'RedWinsByDecisionMajority', 'RedWinsByDecisionSplit', 'RedWinsByDecisionUnanimous', 'RedWinsByKO', 'RedWinsBySubmission', 'RedWins','RedHeightCms','RedReachCms', 'RedWeightLbs']
 all_fighters = sorted(set(data['RedFighter']).union(set(data['BlueFighter'])))
 
@@ -65,4 +65,5 @@ if button:
            st.success(f"🏆 Predicted Winner: {pred_winner}")
            st.info(f"Win Probabilities of fighters: \n\n"
                     f" {red_f}: {prob[1]*100:.2f}%\n"
+
                     f" {blue_f}: {prob[0]*100:.2f}%")
