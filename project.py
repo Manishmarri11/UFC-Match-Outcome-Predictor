@@ -4,7 +4,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 import pickle
-data = pd.read_csv(r"C:\Users\manis\OneDrive\Desktop\Machine_learning\ufc-master.csv")
+data = pd.read_csv("ufc-master.csv")
 
 data['Winner'] = data['Winner'].map({'Red': 1, 'Blue': 0})
 imp_columns = ['RedOdds', 'BlueOdds', 'RedExpectedValue', 'BlueExpectedValue', 'BlueCurrentLoseStreak', 'BlueCurrentWinStreak', 'BlueLosses', 'BlueWinsByDecisionMajority', 'BlueWinsByDecisionSplit', 'BlueWinsByDecisionUnanimous', 'BlueWinsByKO', 'BlueWinsBySubmission', 'BlueWins','BlueHeightCms','BlueReachCms', 'BlueWeightLbs', 'RedCurrentLoseStreak', 'RedCurrentWinStreak', 'RedLosses', 'RedWinsByDecisionMajority', 'RedWinsByDecisionSplit', 'RedWinsByDecisionUnanimous', 'RedWinsByKO', 'RedWinsBySubmission', 'RedWins','RedHeightCms','RedReachCms', 'RedWeightLbs']
@@ -39,4 +39,5 @@ with open('ufc_ml.pkl', 'wb') as file:
     pickle.dump(model, file)
 
 with open('ufc_ml.pkl', 'rb') as file:
+
     loaded_model = pickle.load(file)
